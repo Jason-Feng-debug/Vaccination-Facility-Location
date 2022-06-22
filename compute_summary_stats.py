@@ -308,6 +308,19 @@ print(tabulate(dist_table, tablefmt="latex"))
 RESULT = np.concatenate((np.round(rate * population_vec / 1000000,2), np.round(avg_dist_actual)), axis=1)
 print(tabulate(RESULT, tablefmt="latex"))
 
+###########################################################################
+### F_D only ###
+
+rate = np.array([[rate_current, rate_current1, rate_current2, rate_current3, rate_current4],
+                 [rate_total, rate_total1, rate_total2, rate_total3, rate_total4]
+                 ])
+
+avg_dist_actual = np.array([[avg_dist_current, avg_dist_current1, avg_dist_current2, avg_dist_current3, avg_dist_current4],
+                            [avg_dist_total, avg_dist_total1, avg_dist_total2, avg_dist_total3, avg_dist_total4]
+                            ])
+
+RESULT = np.concatenate((np.round(rate * population_vec / 1000000,2), np.round(avg_dist_actual)), axis=1)
+print(tabulate(RESULT, tablefmt="latex"))
 
 ###########################################################################
 

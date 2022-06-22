@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 from tabulate import tabulate
 
-os.chdir('/Users/jingyuanhu/Desktop/Research/COVID_project/Submission MS/Code')
+os.chdir('/Users/jingyuanhu/Desktop/Research/COVID project/Submission MS/Code')
 
 ###########################################################################
 ### Census Tract ###
@@ -93,17 +93,29 @@ for budget_stores in budget_stores_list:
         CA_TRACT['Vaccinated_Population_Current_HPI'] = CA_TRACT['Rate_Current_HPI'] * CA_TRACT['Population']
         CA_TRACT['Vaccinated_Population_Total_HPI'] = CA_TRACT['Rate_Total_HPI'] * CA_TRACT['Population']
 
-        rate_current_hpi = round(sum(CA_TRACT['Vaccinated_Population_Current_HPI'].values) / total_population * 100,2)
-        rate_current_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Current_HPI'].values) / population1 * 100,2)
-        rate_current_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Current_HPI'].values) / population2 * 100,2)
-        rate_current_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Current_HPI'].values) / population3 * 100,2)
-        rate_current_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Current_HPI'].values) / population4 * 100,2)
+        # rate_current_hpi = round(sum(CA_TRACT['Vaccinated_Population_Current_HPI'].values) / total_population * 100,2)
+        # rate_current_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Current_HPI'].values) / population1 * 100,2)
+        # rate_current_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Current_HPI'].values) / population2 * 100,2)
+        # rate_current_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Current_HPI'].values) / population3 * 100,2)
+        # rate_current_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Current_HPI'].values) / population4 * 100,2)
 
-        rate_total_hpi = round(sum(CA_TRACT['Vaccinated_Population_Total_HPI'].values) / total_population * 100,2)
-        rate_total_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Total_HPI'].values) / population1 * 100,2)
-        rate_total_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Total_HPI'].values) / population2 * 100,2)
-        rate_total_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Total_HPI'].values) / population3 * 100,2)
-        rate_total_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Total_HPI'].values) / population4 * 100,2)
+        # rate_total_hpi = round(sum(CA_TRACT['Vaccinated_Population_Total_HPI'].values) / total_population * 100,2)
+        # rate_total_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Total_HPI'].values) / population1 * 100,2)
+        # rate_total_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Total_HPI'].values) / population2 * 100,2)
+        # rate_total_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Total_HPI'].values) / population3 * 100,2)
+        # rate_total_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Total_HPI'].values) / population4 * 100,2)
+        
+        rate_current_hpi = round(sum(CA_TRACT['Vaccinated_Population_Current_HPI'].values) / 1000000,2)
+        rate_current_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Current_HPI'].values) / 1000000,2)
+        rate_current_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Current_HPI'].values) / 1000000,2)
+        rate_current_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Current_HPI'].values) / 1000000,2)
+        rate_current_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Current_HPI'].values) / 1000000,2)
+
+        rate_total_hpi = round(sum(CA_TRACT['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
         
         # Dist
         avg_dist_current_hpi = np.nan_to_num(np.sum(np.multiply(C_current, mat_y_current_hpi), axis = 1) / np.sum(mat_y_current_hpi, axis = 1), posinf=0)
@@ -152,8 +164,8 @@ for budget_stores in budget_stores_list:
                    "Rate HPI1": rate_current_hpi1, "Rate HPI2": rate_current_hpi2, "Rate HPI3": rate_current_hpi3, 
                    "Rate HPI4": rate_current_hpi4, "Dist": avg_dist_current_hpi, "Dist HPI1": avg_dist_current_hpi1,
                    "Dist HPI2": avg_dist_current_hpi2, "Dist HPI3": avg_dist_current_hpi3, "Dist HPI4": avg_dist_current_hpi4,
-                   "Actual Dist": actual_dist_current_hpi, "Actual Dist HPI1": actual_dist_current_hpi1, "Actual Dist HPI2": actual_dist_current_hpi2, 
-                   "Actual Dist HPI3": actual_dist_current_hpi3, "Actual Dist HPI4": actual_dist_current_hpi4}
+                   "Actual Dist": actual_dist_current_hpi/1000, "Actual Dist HPI1": actual_dist_current_hpi1/1000, "Actual Dist HPI2": actual_dist_current_hpi2/1000, 
+                   "Actual Dist HPI3": actual_dist_current_hpi3/1000, "Actual Dist HPI4": actual_dist_current_hpi4/1000}
         result_list.append(results)
         
         # Both
@@ -161,8 +173,8 @@ for budget_stores in budget_stores_list:
                    "Rate HPI1": rate_total_hpi1, "Rate HPI2": rate_total_hpi2, "Rate HPI3": rate_total_hpi3, 
                    "Rate HPI4": rate_total_hpi4, "Dist": avg_dist_total_hpi, "Dist HPI1": avg_dist_total_hpi1,
                    "Dist HPI2": avg_dist_total_hpi2, "Dist HPI3": avg_dist_total_hpi3, "Dist HPI4": avg_dist_total_hpi4,
-                   "Actual Dist": actual_dist_total_hpi, "Actual Dist HPI1": actual_dist_total_hpi1, "Actual Dist HPI2": actual_dist_total_hpi2, 
-                   "Actual Dist HPI3": actual_dist_total_hpi3, "Actual Dist HPI4": actual_dist_total_hpi4}
+                   "Actual Dist": actual_dist_total_hpi/1000, "Actual Dist HPI1": actual_dist_total_hpi1/1000, "Actual Dist HPI2": actual_dist_total_hpi2/1000, 
+                   "Actual Dist HPI3": actual_dist_total_hpi3/1000, "Actual Dist HPI4": actual_dist_total_hpi4/1000}
         result_list.append(results)
 
 ###########################################################################
@@ -180,11 +192,12 @@ for budget_stores in budget_stores_list:
         CA_TRACT['Rate_Total_HPI'] = rate_total_hpi
         CA_TRACT['Vaccinated_Population_Total_HPI'] = CA_TRACT['Rate_Total_HPI'] * CA_TRACT['Population']
 
-        rate_total_hpi = round(sum(CA_TRACT['Vaccinated_Population_Total_HPI'].values) / total_population * 100,2)
-        rate_total_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Total_HPI'].values) / population1 * 100,2)
-        rate_total_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Total_HPI'].values) / population2 * 100,2)
-        rate_total_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Total_HPI'].values) / population3 * 100,2)
-        rate_total_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Total_HPI'].values) / population4 * 100,2)
+        rate_total_hpi = round(sum(CA_TRACT['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi1 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 1]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi2 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 2]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi3 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 3]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        rate_total_hpi4 = round(sum(CA_TRACT[CA_TRACT['HPIQuartile'] == 4]['Vaccinated_Population_Total_HPI'].values) / 1000000,2)
+        
         
         # Dist
         avg_dist_total_hpi = np.nan_to_num(np.sum(np.multiply(C_total, mat_y_total_hpi), axis = 1) / np.sum(mat_y_total_hpi, axis = 1), posinf=0)
@@ -213,8 +226,8 @@ for budget_stores in budget_stores_list:
                    "Rate HPI1": rate_total_hpi1, "Rate HPI2": rate_total_hpi2, "Rate HPI3": rate_total_hpi3, 
                    "Rate HPI4": rate_total_hpi4, "Dist": avg_dist_total_hpi, "Dist HPI1": avg_dist_total_hpi1,
                    "Dist HPI2": avg_dist_total_hpi2, "Dist HPI3": avg_dist_total_hpi3, "Dist HPI4": avg_dist_total_hpi4,
-                   "Actual Dist": actual_dist_total_hpi, "Actual Dist HPI1": actual_dist_total_hpi1, "Actual Dist HPI2": actual_dist_total_hpi2, 
-                   "Actual Dist HPI3": actual_dist_total_hpi3, "Actual Dist HPI4": actual_dist_total_hpi4}
+                   "Actual Dist": actual_dist_total_hpi/1000, "Actual Dist HPI1": actual_dist_total_hpi1/1000, "Actual Dist HPI2": actual_dist_total_hpi2/1000, 
+                   "Actual Dist HPI3": actual_dist_total_hpi3/1000, "Actual Dist HPI4": actual_dist_total_hpi4/1000}
         result_list.append(results)
 
 result_table = pd.DataFrame(result_list)
